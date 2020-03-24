@@ -73,5 +73,4 @@ namespace TicTacToeKata
     }
 }
 
-//myBoard.allrows[0][0] = "X";
 
