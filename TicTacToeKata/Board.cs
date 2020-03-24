@@ -4,7 +4,7 @@ namespace TicTacToeKata
     public class Board
     {
         public string[][] allrows;
-        bool userXTurn = true;
+        //bool userXTurn = true;
 
         public Board()
         {
@@ -26,9 +26,18 @@ namespace TicTacToeKata
         }
 
         //function that checks if coordinate is free, if free places user letter on the board
+        public void MarksAField(int coordinateOne, int coordinateTwo)
+        {
+            //checks if field is empty
+            if (allrows[coordinateOne][coordinateTwo]==".")
+            {
+                //changes . to X in field
+                allrows[coordinateOne][coordinateTwo] = "X";
+            }
+        }
 
         //for the first iteration - just have one player place their letter
     }
 }
 
-
+//myBoard.allrows[0][0] = "X";
