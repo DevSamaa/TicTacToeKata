@@ -3,16 +3,14 @@ namespace TicTacToeKata
 {
     public class UserInput
     {
-       
         //needs to check if user input = q - if so, exit the game
         public UserInput()
         {
         }
 
-
-        public string GetUserInput()
+        public string GetUserInput(string incomingUserName)
         {
-            Console.WriteLine("(Player 1) enter a coord x,y to place your X or enter 'q' to give up:");
+            Console.WriteLine($"{incomingUserName} enter a coord x,y to place your X or enter 'q' to give up:");
             string userInput = Console.ReadLine();
             return userInput;
             //Console.WriteLine($"this is what the user typed:{userInput}");

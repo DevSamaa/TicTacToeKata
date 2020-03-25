@@ -4,7 +4,8 @@ namespace TicTacToeKata
     public class Board
     {
         public string[][] allrows;
-        //bool userXTurn = true;
+
+        public string playerName { get; set; }
 
         public Board()
         {
@@ -26,18 +27,60 @@ namespace TicTacToeKata
         }
 
         //function that checks if coordinate is free, if free places user letter on the board
-        public void MarksAField(int coordinateOne, int coordinateTwo)
+        public void MarksAField(int coordinateOne, int coordinateTwo, string playerName)
         {
             //checks if field is empty
             if (allrows[coordinateOne][coordinateTwo]==".")
             {
                 //changes . to X in field
-                allrows[coordinateOne][coordinateTwo] = "X";
+                allrows[coordinateOne][coordinateTwo] = playerName;
             }
+            //needs an else - what if the field is alreadt X or O? How do you repeat the input steps?
+            
         }
 
-        //for the first iteration - just have one player place their letter
+        public bool RowChecker()
+        {
+            for (int row = 0; row < 3; row++)
+            {
+                if (allrows[row][0] == playerName && allrows[row][1] == playerName && allrows[row][2] == playerName)
+                {
+                    return true;
+                }
+                
+            }
+            return false;
+        }
+
+        public bool ColumnChecker()
+        {
+            for (int column = 0; column < 3; column++)
+            {
+                if (allrows[0][column]== playerName && allrows[1][column]== playerName && allrows[2][column]== playerName)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool DiagonalChecker()
+        {
+            if (allrows[0][0]== playerName && allrows[1][1]== playerName && allrows[2][2]== playerName)
+            {
+                return true;
+            }
+            else if (allrows[0][2] == "X" && allrows[1][1] == "X" && allrows[2][0] == "X")
+            {
+                return true;
+
+            }
+
+            return false;
+        }
+
     }
 }
 
 //myBoard.allrows[0][0] = "X";
+
