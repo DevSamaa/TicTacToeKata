@@ -19,11 +19,13 @@ namespace TicTacToeKata
 
         public void PrintBoard()
         {
+            Console.WriteLine();
             Console.WriteLine("Here's the current board:");
             foreach (var arrayOfString in allrows)
             {
                 Console.WriteLine($"{arrayOfString[0]} {arrayOfString[1]} {arrayOfString[2]}");
             }
+            Console.WriteLine();
         }
 
         //function that checks if coordinate is free, if free places user letter on the board

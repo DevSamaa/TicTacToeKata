@@ -10,7 +10,7 @@ namespace TicTacToeKata
 
         public string GetUserInput(string incomingUserName)
         {
-            Console.WriteLine($"{incomingUserName} enter a coord x,y to place your X or enter 'q' to give up:");
+            Console.WriteLine($"{incomingUserName} enter a coord x,y to place your {incomingUserName} or enter 'q' to give up:");
             string userInput = Console.ReadLine();
             return userInput;
             //Console.WriteLine($"this is what the user typed:{userInput}");
