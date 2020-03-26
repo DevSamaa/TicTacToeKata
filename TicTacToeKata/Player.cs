@@ -3,12 +3,12 @@ namespace TicTacToeKata
 {
     public class Player
     {
-        public string playerName;
+        //public string playerName;
 
-        public Player(string incomingPlayerName)
-        {
-            playerName = incomingPlayerName;
-        }
+        //public Player(string incomingPlayerName)
+        //{
+        //    playerName = incomingPlayerName;
+        //}
 
         
     }
