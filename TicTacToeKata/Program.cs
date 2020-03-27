@@ -35,7 +35,7 @@ namespace TicTacToeKata
                 }
 
                 //processes the user input, outputs coordinates
-                Coordinate turnCoordinates = userInputInstance.ProcessUserInput(UserInput);
+                Coordinate turnCoordinates = userInputInstance.ProcessUserInput2(UserInput);
 
                 //uses coordinates and playername to mark the board
                 myBoard.MarkAField(turnCoordinates,myBoard.playerName);

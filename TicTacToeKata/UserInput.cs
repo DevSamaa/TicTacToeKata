@@ -13,8 +13,81 @@ namespace TicTacToeKata
             string userInput = Console.ReadLine();
             return userInput;
         }
+        
+        public Coordinate ProcessUserInput2(string incomingUserInput)
+        {
+            ExtractTwoStrings(incomingUserInput);
+            string row = ExtractTwoStrings(incomingUserInput).Item1;
+            string column = ExtractTwoStrings(incomingUserInput).Item2;
+
+            int rowInt = CheckIfInt(row);
+            int columnInt = CheckIfInt(column);
+
+            int validatedRow = ValidateValue(rowInt);
+            int validatedColumn = ValidateValue(columnInt);
+
+            int finalRow = SubtractOne(validatedRow);
+            int finalColumn = SubtractOne(validatedColumn);
+
+            return new Coordinate(finalRow, finalColumn);
+
+        }
+
+        // 1) extract first and third charcter and turn to string
+        public (string, string) ExtractTwoStrings(string incomingUserInput)
+        {
+            string row = incomingUserInput[0].ToString();
+            string column = incomingUserInput[2].ToString();
+            return (row, column);
+        }
 
 
+        // 2) check if string is integer (one at a time)
+        public int CheckIfInt(string incomingUserInput)
+        {
+            bool InputIsNumber = int.TryParse(incomingUserInput, out int result);
+            if (InputIsNumber)
+            {
+                return result;
+            }
+
+            throw new Exception("invalid user input: not a number");
+
+        }
+
+        // 3) check if integers are between 1 and 3
+        private int ValidateValue(int incomingNumber)
+        {
+            if (incomingNumber > 0 && incomingNumber < 4)
+            {
+                return incomingNumber;
+            }
+            throw new Exception("invalid user input: not a number between 1 and 3");
+
+        }
+
+
+        // 4) subtract 1 from numbers to turn them into coordinates
+        public int SubtractOne (int incomingNumber)
+        {
+            incomingNumber = incomingNumber - 1;
+            return incomingNumber;
+        }
+
+
+
+        //-------------
+        // 5) joins two ints together to form a Coordinate 
+        //public Coordinate Convert2IntsToCoordinates(int incomingNumber1, int incomingNumber2)
+        //{
+        //    incomingNumber1 = incomingNumber1 - 1;
+        //    incomingNumber2 = incomingNumber2 - 1;
+
+        //    return new Coordinate(incomingNumber1, incomingNumber2);
+        //}
+
+
+        //--------------------------
         public Coordinate ProcessUserInput(string incomingUserInput)
         {
             //converts character to string

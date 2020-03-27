@@ -55,7 +55,7 @@ namespace TicTacToeKata
             {
                 return true;
             }
-            else if (allrows[0][2] == "X" && allrows[1][1] == "X" && allrows[2][0] == "X")
+            else if (allrows[0][2] == playerName && allrows[1][1] == playerName && allrows[2][0] ==playerName)
             {
                 return true;
 
