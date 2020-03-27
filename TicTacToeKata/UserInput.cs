@@ -14,14 +14,14 @@ namespace TicTacToeKata
             return userInput;
         }
         
-        public Coordinate ProcessUserInput2(string incomingUserInput)
+        public Coordinate ProcessUserInput2(string incomingUserInput, string incomingUserName)
         {
             ExtractTwoStrings(incomingUserInput);
             string row = ExtractTwoStrings(incomingUserInput).Item1;
             string column = ExtractTwoStrings(incomingUserInput).Item2;
 
-            int rowInt = CheckIfInt(row);
-            int columnInt = CheckIfInt(column);
+            int rowInt = CheckIfInt(row, incomingUserName);
+            int columnInt = CheckIfInt(column, incomingUserName);
 
             int validatedRow = ValidateValue(rowInt);
             int validatedColumn = ValidateValue(columnInt);
@@ -43,14 +43,18 @@ namespace TicTacToeKata
 
 
         // 2) check if string is integer 
-        public int CheckIfInt(string incomingUserInput)
+        public int CheckIfInt(string incomingUserInput, string incomingUserName)
         {
             bool InputIsNumber = int.TryParse(incomingUserInput, out int result);
             if (InputIsNumber)
             {
                 return result;
             }
-
+            else
+            {
+                Console.WriteLine("That was not a valid input, you need to input two numbers like so :1,3");
+                GetUserInput(incomingUserName);
+            }
             throw new Exception("invalid user input: not a number");
 
         }
