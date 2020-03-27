@@ -42,7 +42,7 @@ namespace TicTacToeKata
         }
 
 
-        // 2) check if string is integer (one at a time)
+        // 2) check if string is integer 
         public int CheckIfInt(string incomingUserInput)
         {
             bool InputIsNumber = int.TryParse(incomingUserInput, out int result);
@@ -55,7 +55,7 @@ namespace TicTacToeKata
 
         }
 
-        // 3) check if integers are between 1 and 3
+        // 3) check if integer is between 1 and 3
         private int ValidateValue(int incomingNumber)
         {
             if (incomingNumber > 0 && incomingNumber < 4)
@@ -67,7 +67,7 @@ namespace TicTacToeKata
         }
 
 
-        // 4) subtract 1 from numbers to turn them into coordinates
+        // 4) subtract 1 from number to turn it into coordinate
         public int SubtractOne (int incomingNumber)
         {
             incomingNumber = incomingNumber - 1;
@@ -75,16 +75,6 @@ namespace TicTacToeKata
         }
 
 
-
-        //-------------
-        // 5) joins two ints together to form a Coordinate 
-        //public Coordinate Convert2IntsToCoordinates(int incomingNumber1, int incomingNumber2)
-        //{
-        //    incomingNumber1 = incomingNumber1 - 1;
-        //    incomingNumber2 = incomingNumber2 - 1;
-
-        //    return new Coordinate(incomingNumber1, incomingNumber2);
-        //}
 
 
         //--------------------------
