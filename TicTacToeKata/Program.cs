@@ -11,8 +11,13 @@ namespace TicTacToeKata
             //instantiates the board
             var myBoard = new Board();
             myBoard.PrintBoard();
-            myBoard.playerName = "O";
 
+            //create two players
+            var playerO = new Player("O", myBoard.allrows);
+            var playerX = new Player("X", myBoard.allrows);
+
+            //This is called a reference, it holds everything that playero or playerX has.
+            Player currentPlayer = playerO;
 
             while (true)
             {
@@ -22,7 +27,7 @@ namespace TicTacToeKata
                 {
                     //gets user input
                     var userInputInstance = new UserInput();
-                    string userInput = userInputInstance.GetUserInput(myBoard.playerName);
+                    string userInput = userInputInstance.GetUserInput(currentPlayer.playerName);
                     if (userInput == "q")
                     {
                         break;
@@ -32,28 +37,28 @@ namespace TicTacToeKata
                     Coordinate turnCoordinates = userInputInstance.CreateCoordinates(userInput);
 
                     //uses coordinates and playername to mark the board
-                    myBoard.MarkAField(turnCoordinates, myBoard.playerName);
+                    currentPlayer.MarkAField(turnCoordinates, currentPlayer.playerName);
 
                     myBoard.PrintBoard();
 
                     //creates instance of Findwinner and runs the function on it
                     var findWinnerInstance = new WinnerFinder(myBoard.allrows);
-                    bool weHaveAWinner = findWinnerInstance.WeHaveAWinner(myBoard.playerName);
+                    bool weHaveAWinner = findWinnerInstance.WeHaveAWinner(currentPlayer.playerName);
 
                     if (weHaveAWinner)
                     {
-                        Console.WriteLine($"Congrats player {myBoard.playerName} you win!");
+                        Console.WriteLine($"Congrats player {currentPlayer.playerName} you win!");
                         break;
                     }
 
                    
-                    if (myBoard.playerName == "X")
+                    if (currentPlayer == playerX)
                     {
-                        myBoard.playerName = "O";
+                        currentPlayer = playerO;
                     }
-                    else if (myBoard.playerName == "O")
+                    else if (currentPlayer == playerO)
                     {
-                        myBoard.playerName = "X";
+                        currentPlayer = playerX;
                     }
                 }
                 catch (Exception ex)
