@@ -14,23 +14,26 @@ namespace TicTacToeKata
             return userInput;
         }
         
-        public Coordinate ProcessUserInput2(string incomingUserInput)
+        public Coordinate CreateCoordinates(string incomingUserInput)
         {
-            //TODO organize the columns and rows all together -- that should help you figure out how to change this, most likely I'll need to move parts of this code into a seperate function.
-            string row = ExtractTwoStrings(incomingUserInput).Item1;
-            string column = ExtractTwoStrings(incomingUserInput).Item2;
+            var userInputStrings = ExtractTwoStrings(incomingUserInput);
 
-            int rowInt = CheckIfInt(row);
-            int columnInt = CheckIfInt(column);
+            string row = userInputStrings.Item1;
+            string column = userInputStrings.Item2;
 
-            int validatedRow = ValidateValue(rowInt);
-            int validatedColumn = ValidateValue(columnInt);
-
-            int finalRow = SubtractOne(validatedRow);
-            int finalColumn = SubtractOne(validatedColumn);
+            int finalRow = ProcessUserInput(row);
+            int finalColumn = ProcessUserInput(column);
 
             return new Coordinate(finalRow, finalColumn);
 
+        }
+
+        public int ProcessUserInput(string incomingString)
+        {
+            int checkedInt = CheckIfInt(incomingString);
+            int validatedInt = ValidateValue(checkedInt);
+            int zeroIndexed = SubtractOne(validatedInt);
+            return zeroIndexed;
         }
 
         // 1) extract first and third charcter and turn to string
@@ -50,8 +53,8 @@ namespace TicTacToeKata
             {
                 return result;
             }
-        
             throw new Exception("invalid user input: not a number");
+
 
         }
 
@@ -75,50 +78,6 @@ namespace TicTacToeKata
         }
 
 
-
-
-        //--------------------------
-        public Coordinate ProcessUserInput(string incomingUserInput)
-        {
-            //converts character to string
-            var number1 = incomingUserInput[0].ToString();
-            var number2 = incomingUserInput[2].ToString();
-
-            //checks if string is a number by parsing it into an int, also returns true or false
-            bool is1number = int.TryParse(number1, out int result1);
-            bool is2number = int.TryParse(number2, out int result2);
-
-            if (is1number && is2number == true)
-            {
-                //this is where NumberValidator is called
-                bool isValidNumber = ValidateNumbers(result1, result2);
-                if (isValidNumber == true)
-                {
-                    //subtracts one to create coordinates (arrays start at 0, not 1)
-                    result1 = result1 - 1;
-                    result2 = result2 - 1;
-                    return new Coordinate(result1, result2);
-
-                }
-                throw new Exception("invalid user input: not a number between 1 and 3");
-
-            }
-
-            throw new Exception("invalid user input: not a number");
-        }
-
-
-        private bool ValidateNumbers(int incomingNumber1, int incomingNumber2)
-        {
-            //checke whether incomingNumber = 1,2 or 3
-            if (incomingNumber1 > 0 && incomingNumber1 < 4
-             && incomingNumber2 > 0 && incomingNumber2 < 4)
-            {
-                return true;
-            }
-            return false;
-
-        }
 
     }
 }

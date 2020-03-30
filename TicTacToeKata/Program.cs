@@ -22,14 +22,14 @@ namespace TicTacToeKata
                 {
                     //gets user input
                     var userInputInstance = new UserInput();
-                    string UserInput = userInputInstance.GetUserInput(myBoard.playerName);
-                    if (UserInput == "q")
+                    string userInput = userInputInstance.GetUserInput(myBoard.playerName);
+                    if (userInput == "q")
                     {
                         break;
                     }
 
                     //processes the user input, outputs coordinates
-                    Coordinate turnCoordinates = userInputInstance.ProcessUserInput2(UserInput);
+                    Coordinate turnCoordinates = userInputInstance.CreateCoordinates(userInput);
 
                     //uses coordinates and playername to mark the board
                     myBoard.MarkAField(turnCoordinates, myBoard.playerName);
@@ -46,7 +46,7 @@ namespace TicTacToeKata
                         break;
                     }
 
-                    //TODO make this into a function in Program.cs
+                   
                     if (myBoard.playerName == "X")
                     {
                         myBoard.playerName = "O";
@@ -58,6 +58,7 @@ namespace TicTacToeKata
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
                     continue;
                 }
                 

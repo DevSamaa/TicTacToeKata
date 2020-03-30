@@ -37,8 +37,10 @@ namespace TicTacToeKata
                 //changes . to X in field
                 allrows[incomingCoordinate.row][incomingCoordinate.column] = incomingPlayerName;
             }
-            //needs an else - what if the field is alreadt X or O? How do you repeat the input steps?
-            
+            else
+            {
+                throw new Exception("That field is already taken, please pick another one");
+            }
         }
 
         
