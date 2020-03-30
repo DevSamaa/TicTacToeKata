@@ -13,8 +13,8 @@ namespace TicTacToeKata
             myBoard.PrintBoard();
 
             //create two players
-            var playerO = new Player("O", myBoard.allrows);
-            var playerX = new Player("X", myBoard.allrows);
+            var playerO = new Player("O");
+            var playerX = new Player("X");
 
             //This is called a reference, it holds everything that playero or playerX has.
             Player currentPlayer = playerO;
@@ -37,7 +37,7 @@ namespace TicTacToeKata
                     Coordinate turnCoordinates = userInputInstance.CreateCoordinates(userInput);
 
                     //uses coordinates and playername to mark the board
-                    currentPlayer.MarkAField(turnCoordinates, currentPlayer.playerName);
+                    currentPlayer.MarkAField(turnCoordinates, myBoard);
 
                     myBoard.PrintBoard();
 

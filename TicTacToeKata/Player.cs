@@ -5,22 +5,21 @@ namespace TicTacToeKata
     {
         public string playerName { get; set; }
 
-        string[][] allrows;
 
-        public Player(string incomingPlayerName, string[][] incomingAllRows)
+        public Player(string incomingPlayerName)
         {
              playerName = incomingPlayerName;
-             allrows = incomingAllRows;
+            
         }
 
         //function that checks if coordinate is free, if free places user letter on the board
-        public void MarkAField(Coordinate incomingCoordinate, string incomingPlayerName)
+        public void MarkAField(Coordinate incomingCoordinate, Board incomingBoard)
         {
             //checks if field is empty
-            if (allrows[incomingCoordinate.row][incomingCoordinate.column] == ".")
+            if (incomingBoard.allrows[incomingCoordinate.row][incomingCoordinate.column] == ".")
             {
                 //changes . to X in field
-                allrows[incomingCoordinate.row][incomingCoordinate.column] = incomingPlayerName;
+                incomingBoard.allrows[incomingCoordinate.row][incomingCoordinate.column] = playerName;
             }
             else
             {

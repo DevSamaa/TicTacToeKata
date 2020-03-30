@@ -28,7 +28,7 @@ namespace TicTacToeKata
 
         }
 
-        public int ProcessUserInput(string incomingString)
+        private int ProcessUserInput(string incomingString)
         {
             int checkedInt = CheckIfInt(incomingString);
             int validatedInt = ValidateValue(checkedInt);
@@ -37,7 +37,7 @@ namespace TicTacToeKata
         }
 
         // 1) extract first and third charcter and turn to string
-        public (string, string) ExtractTwoStrings(string incomingUserInput)
+        private (string, string) ExtractTwoStrings(string incomingUserInput)
         {
             string row = incomingUserInput[0].ToString();
             string column = incomingUserInput[2].ToString();
@@ -46,7 +46,7 @@ namespace TicTacToeKata
 
 
         // 2) check if string is integer 
-        public int CheckIfInt(string incomingUserInput)
+        private int CheckIfInt(string incomingUserInput)
         {
             bool InputIsNumber = int.TryParse(incomingUserInput, out int result);
             if (InputIsNumber)
