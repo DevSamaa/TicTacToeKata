@@ -46,7 +46,7 @@ namespace TicTacToeKata
 
 
         // 2) check if string is integer 
-        private int CheckIfInt(string incomingUserInput)
+        public int CheckIfInt(string incomingUserInput)
         {
             bool InputIsNumber = int.TryParse(incomingUserInput, out int result);
             if (InputIsNumber)
@@ -59,7 +59,7 @@ namespace TicTacToeKata
         }
 
         // 3) check if integer is between 1 and 3
-        private int ValidateValue(int incomingNumber)
+        public int ValidateValue(int incomingNumber)
         {
             if (incomingNumber > 0 && incomingNumber < 4)
             {

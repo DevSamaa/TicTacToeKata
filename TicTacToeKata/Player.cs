@@ -5,7 +5,6 @@ namespace TicTacToeKata
     {
         public string playerName { get; set; }
 
-
         public Player(string incomingPlayerName)
         {
              playerName = incomingPlayerName;
