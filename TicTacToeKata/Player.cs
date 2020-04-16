@@ -12,13 +12,14 @@ namespace TicTacToeKata
         }
 
         //function that checks if coordinate is free, if free places user letter on the board
-        public void MarkAField(Coordinate incomingCoordinate, Board incomingBoard)
+        public Board MarkAField(Coordinate incomingCoordinate, Board incomingBoard)
         {
             //checks if field is empty
             if (incomingBoard.allrows[incomingCoordinate.row][incomingCoordinate.column] == ".")
             {
                 //changes . to X in field
                 incomingBoard.allrows[incomingCoordinate.row][incomingCoordinate.column] = playerName;
+                return incomingBoard;
             }
             else
             {

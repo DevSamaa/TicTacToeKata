@@ -16,6 +16,7 @@ namespace TicTacToeKata
         
         public Coordinate CreateCoordinates(string incomingUserInput)
         {
+            //ToDo write a test for this later.
             var userInputStrings = ExtractTwoStrings(incomingUserInput);
 
             string row = userInputStrings.Item1;
@@ -36,6 +37,11 @@ namespace TicTacToeKata
             return zeroIndexed;
         }
 
+
+        //userinput array 3 characters - middle character is comma
+        //array length is 3
+        //array[1] is a comma
+
         // 1) extract first and third charcter and turn to string
         private (string, string) ExtractTwoStrings(string incomingUserInput)
         {
@@ -44,6 +50,7 @@ namespace TicTacToeKata
             return (row, column);
         }
 
+     
 
         // 2) check if string is integer 
         public int CheckIfInt(string incomingUserInput)
@@ -55,6 +62,16 @@ namespace TicTacToeKata
             }
             throw new Exception("invalid user input: not a number");
 
+        }
+
+        public int CheckIfInt2(string incomingUserInput)
+        {
+            bool InputIsNumber = int.TryParse(incomingUserInput, out int result);
+            if (InputIsNumber)
+            {
+                return result;
+            }
+            throw new Exception("invalid user input: not a number");
 
         }
 
